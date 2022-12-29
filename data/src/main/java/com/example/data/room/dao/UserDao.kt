@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.data.entity.UserDt
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDao {
@@ -14,5 +13,5 @@ interface UserDao {
     suspend fun registerUser(user: UserDt)
 
     @Query("SELECT * FROM ${UserDt.TABLE_NAME} WHERE email LIKE :email AND password LIKE :password")
-    fun loginUser(email: String, password: String): Flow<List<UserDt>>
+    suspend fun loginUser(email: String, password: String): UserDt?
 }

@@ -1,16 +1,12 @@
 package com.example.muzira.di
 
 import androidx.room.Room
-import com.example.data.mapper.UserMapper
 import com.example.data.repository.UserRepositoryImpl
 import com.example.data.room.UserDatabase
+import com.example.domain.repository.UserRepository
 import org.koin.dsl.module
 
 val dataModule = module {
-
-    factory {
-        UserMapper()
-    }
 
     single {
         Room.databaseBuilder(
@@ -24,7 +20,7 @@ val dataModule = module {
         get<UserDatabase>().userDao()
     }
 
-    single {
-        UserRepositoryImpl(userDao = get(), userMapper = get())
+    single<UserRepository> {
+        UserRepositoryImpl(userDao = get())
     }
 }
