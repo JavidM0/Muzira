@@ -1,8 +1,8 @@
 package com.example.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.presentation.databinding.FragmentHomePageBinding

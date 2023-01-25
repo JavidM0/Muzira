@@ -1,42 +1,38 @@
 package com.example.presentation.signup
 
 import android.util.Patterns
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.data.module.UserInfoModule
 import com.example.domain.entity.User
 import com.example.domain.usecase.RegisterUserUseCase
-import com.example.data.module.UserInfoModule
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import java.util.regex.Pattern
 
-class SignUpViewModel(private val registerUserUseCase: RegisterUserUseCase) : ViewModel() {
+class SignUpViewModel(private val registerUserUseCase: RegisterUserUseCase) : SignUpViewModelApi() {
 
-    private val _invalidEmailEvent: MutableLiveData<Boolean> = MutableLiveData()
-    val invalidEmailEvent: LiveData<Boolean> get() = _invalidEmailEvent
-
-    private val _invalidPasswordEvent: MutableLiveData<Boolean> = MutableLiveData()
-    val invalidPasswordEvent: LiveData<Boolean> get() = _invalidPasswordEvent
-
-    private val _invalidConfirmPasswordEvent: MutableLiveData<Boolean> = MutableLiveData()
-    val invalidConfirmPasswordEvent: LiveData<Boolean> get() = _invalidConfirmPasswordEvent
-
-    private val _successValidationEvent: MutableLiveData<UserInfoModule> = MutableLiveData()
-    val successValidationEvent: LiveData<UserInfoModule> get() = _successValidationEvent
+    override val invalidEmailEvent: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    override val invalidPasswordEvent: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    override val invalidConfirmPasswordEvent: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    override val successValidationEvent: MutableStateFlow<UserInfoModule> =
+        MutableStateFlow(UserInfoModule(EMPTY_EMAIL))
 
     fun validateInputs(
         email: String,
         password: String,
         confirmPassword: String,
-    ) = when {
-        !isValidateEmail(email) -> _invalidEmailEvent.value = true
-        !isValidatePassword(password) -> _invalidPasswordEvent.value = true
-        !isValidateConfirmPassword(
-            password,
-            confirmPassword
-        ) -> _invalidConfirmPasswordEvent.value = true
-        else -> _successValidationEvent.value = UserInfoModule(email)
+    ) {
+        viewModelScope.launch {
+            when {
+                !isValidateEmail(email) -> invalidEmailEvent.emit(true)
+                !isValidatePassword(password) -> invalidPasswordEvent.emit(true)
+                !isValidateConfirmPassword(
+                    password,
+                    confirmPassword
+                ) -> invalidConfirmPasswordEvent.emit(true)
+                else -> successValidationEvent.emit(UserInfoModule(email))
+            }
+        }
     }
 
     private fun isValidateEmail(email: String) = Patterns.EMAIL_ADDRESS.matcher(email).matches()
@@ -54,6 +50,7 @@ class SignUpViewModel(private val registerUserUseCase: RegisterUserUseCase) : Vi
     }
 
     companion object {
+        const val EMPTY_EMAIL = ""
         const val PASSWORD_PATTERN =
             "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@\$%^&()\\[\\]{:;<>,?/~_+\\-=|]).{8,64}$"
     }

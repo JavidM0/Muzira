@@ -1,30 +1,31 @@
 package com.example.presentation.signin
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.domain.usecase.LoginUserUseCase
 import com.example.data.module.UserInfoModule
+import com.example.domain.usecase.LoginUserUseCase
+import kotlinx.coroutines.flow.MutableStateFlow
+
 import kotlinx.coroutines.launch
 
-class SignInViewModel(private val loginUserUseCase: LoginUserUseCase) : ViewModel() {
+class SignInViewModel(private val loginUserUseCase: LoginUserUseCase) : SignInViewModelApi() {
 
-    private val _errorLoginEvent: MutableLiveData<Boolean> = MutableLiveData()
-    val errorLoginEvent: LiveData<Boolean> get() = _errorLoginEvent
-
-    private val _successLoginEvent: MutableLiveData<UserInfoModule> = MutableLiveData()
-    val successLoginEvent: LiveData<UserInfoModule> get() = _successLoginEvent
+    override val errorLoginEvent: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    override val successLoginEvent: MutableStateFlow<UserInfoModule> =
+        MutableStateFlow(UserInfoModule(EMPTY_EMAIL))
 
     fun checkUser(email: String, password: String) {
         viewModelScope.launch {
             val user = loginUserUseCase.execute(email, password)
 
             if (user != null) {
-                _successLoginEvent.value = UserInfoModule(user.email)
+                successLoginEvent.emit(UserInfoModule(user.email))
             } else {
-                _errorLoginEvent.value = true
+                errorLoginEvent.emit(true)
             }
         }
+    }
+
+    companion object {
+        const val EMPTY_EMAIL = ""
     }
 }

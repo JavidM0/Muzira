@@ -1,4 +1,22 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext {
+        //SDK and tools
+        compileSdkVersion = 33
+        minSdkVersion = 24
+        targetSdkVersion = 33
+
+        //App dependencies
+        app_compat_version = "1.5.1"
+        core_version = "1.8.0"
+        material_version = "1.7.0"
+        koin_version = "3.1.2"
+        room_version = "2.2.5"
+        view_binding_delegate_version = "1.5.6"
+        nav_version = "2.5.3"
+        constraint_version = "2.1.4"
+    }
+}
+
 plugins {
     id 'com.android.application' version '7.3.1' apply false
     id 'com.android.library' version '7.3.1' apply false

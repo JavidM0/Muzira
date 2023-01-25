@@ -2,11 +2,11 @@ package com.example.data.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.data.entity.UserDt.Companion.TABLE_NAME
+import com.example.data.entity.UserData.Companion.TABLE_NAME
 import com.example.domain.entity.User
 
 @Entity(tableName = TABLE_NAME)
-data class UserDt(
+data class UserData(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     val email: String,
@@ -17,19 +17,14 @@ data class UserDt(
     }
 }
 
-internal fun UserDt.toDomainEntity() = User(
+internal fun UserData.toDomainEntity() = User(
     id = id,
     email = email,
     password = password,
 )
 
-internal fun User.toDataModel() = UserDt(
+internal fun User.toDataModel() = UserData(
     id = id,
     email = email,
     password = password,
 )
-
-
-
-
-

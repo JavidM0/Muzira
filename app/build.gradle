@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.muzira.app'
-    compileSdk 33
+    compileSdk rootProject.compileSdkVersion
 
     defaultConfig {
         applicationId "com.example.muzira.app"
-        minSdk 24
-        targetSdk 33
+        minSdk = rootProject.minSdkVersion
+        targetSdk = rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -36,23 +36,28 @@ android {
 }
 
 dependencies {
-    def koin_version = "3.1.2"
-    def room_version = "2.2.5"
-
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
-
-    implementation "androidx.room:room-ktx:$room_version"
-
-    implementation "io.insert-koin:koin-core:$koin_version"
-    implementation "io.insert-koin:koin-android:$koin_version"
-
-    implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.6'
 
     implementation project(':domain')
     implementation project(':data')
     implementation project(':presentation')
+
+    implementation "androidx.core:core-ktx:$core_version"
+    implementation "androidx.appcompat:appcompat:$app_compat_version"
+
+    //Constraint
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
+
+    //Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    //Room
+    implementation "androidx.room:room-ktx:$room_version"
+
+    //Koin
+    implementation "io.insert-koin:koin-core:$koin_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
+
+    //ViewBindingDelegate
+    implementation "com.github.kirich1409:viewbindingpropertydelegate:$view_binding_delegate_version"
 }

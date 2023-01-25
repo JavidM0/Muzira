@@ -4,14 +4,14 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.data.entity.UserDt
+import com.example.data.entity.UserData
 
 @Dao
 interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun registerUser(user: UserDt)
+    suspend fun registerUser(user: UserData)
 
-    @Query("SELECT * FROM ${UserDt.TABLE_NAME} WHERE email LIKE :email AND password LIKE :password")
-    suspend fun loginUser(email: String, password: String): UserDt?
+    @Query("SELECT * FROM ${UserData.TABLE_NAME} WHERE email LIKE :email AND password LIKE :password")
+    suspend fun loginUser(email: String, password: String): UserData?
 }

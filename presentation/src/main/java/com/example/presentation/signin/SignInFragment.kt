@@ -1,21 +1,21 @@
 package com.example.presentation.signin
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.data.module.UserInfoModule
-import com.example.presentation.signup.SignUpFragment.Companion.USER_BUNDLE_KEY
 import com.example.presentation.R
 import com.example.presentation.databinding.FragmentSignInBinding
+import com.example.presentation.signup.SignUpFragment.Companion.USER_BUNDLE_KEY
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     private val binding: FragmentSignInBinding by viewBinding()
-    private val vm: SignInViewModel by viewModel()
+    private val viewModel: SignInViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setOnSignInClickListener()
@@ -23,7 +23,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         observeViewModel()
     }
 
-    private fun observeViewModel() = with(vm) {
+    private fun observeViewModel() = with(viewModel) {
 
         errorLoginEvent.observe(viewLifecycleOwner) {
             Toast.makeText(
@@ -45,7 +45,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         val textOfEmailEt = binding.etEmail.text.toString()
         val textOfPasswordEt = binding.etPassword.text.toString()
 
-        vm.checkUser(textOfEmailEt, textOfPasswordEt)
+        viewModel.checkUser(textOfEmailEt, textOfPasswordEt)
     }
 
     private fun setOnSignUpClickListener() = binding.tvRegister.setOnClickListener {

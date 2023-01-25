@@ -4,16 +4,18 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.presentation.signup.SignUpFragment.Companion.USER_BUNDLE_KEY
 import com.example.presentation.databinding.FragmentMusicPlayerBinding
-import java.util.concurrent.TimeUnit.*
+import com.example.presentation.signup.SignUpFragment.Companion.USER_BUNDLE_KEY
+import java.util.concurrent.TimeUnit.HOURS
+import java.util.concurrent.TimeUnit.MILLISECONDS
+import java.util.concurrent.TimeUnit.MINUTES
 
 class MusicPlayerFragment : Fragment() {
 
@@ -83,7 +85,6 @@ class MusicPlayerFragment : Fragment() {
         if (!mediaPlayer.isPlaying) {
             binding.btnPlayOrPause.setImageResource(R.drawable.pause_button_icon)
             mediaPlayer.start()
-
         } else {
             binding.btnPlayOrPause.setImageResource(R.drawable.play_button_icon)
             mediaPlayer.pause()
