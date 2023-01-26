@@ -7,57 +7,53 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="30dp"
-    tools:context=".HomePageFragment">
+    tools:context=".home.HomePageFragment">
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="220dp" />
+        android:layout_height="340dp" />
 
     <TextView
+        style="@style/Bold.ColorBlack.28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/apax_bold"
-        android:text="@string/loginNow"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="28sp" />
+        android:text="@string/sign_in__title__login_now"
+        android:textAlignment="center" />
 
     <TextView
+        style="@style/Thin.16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:fontFamily="@font/apax_thin"
-        android:text="@string/enter_details"
-        android:textAlignment="center"
-        android:textSize="16sp" />
+        android:text="@string/sign_in__caption__please_enter_the_details"
+        android:textAlignment="center" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email_text_input_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
         android:textColorHint="@color/gray">
 
         <EditText
             android:id="@+id/et_email"
+            style="@style/Thin.ColorBlack"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/light_gray"
-            android:fontFamily="@font/apax_thin"
-            android:hint="@string/email"
+            android:layout_height="55dp"
+            android:hint="@string/sign_in__title__email"
             android:inputType="textEmailAddress"
             android:lines="1"
             android:maxLines="1"
             android:padding="10dp"
-            android:textColor="@color/black" />
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/password_text_input_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textColorHint="@color/gray"
         app:passwordToggleEnabled="true"
@@ -65,50 +61,23 @@
 
         <EditText
             android:id="@+id/et_password"
+            style="@style/Thin.ColorBlack"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/light_gray"
-            android:fontFamily="@font/apax_thin"
-            android:hint="@string/password"
+            android:layout_height="55dp"
+            android:hint="@string/sign_in__title__password"
             android:inputType="textPassword"
             android:lines="1"
             android:maxLines="1"
-            android:padding="10dp"
-            android:textColor="@color/black" />
+            android:padding="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login"
+        style="@style/Bold.ColorWhite"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginTop="70dp"
         android:backgroundTint="@color/red"
-        android:fontFamily="@font/apax_bold"
-        android:text="@string/login"
-        android:textColor="@color/white"
+        android:text="@string/sign_in__action__login"
         app:cornerRadius="40dp" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/apax_regular"
-            android:text="@string/not_have_account" />
-
-        <TextView
-            android:id="@+id/tv_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:fontFamily="@font/apax_regular"
-            android:gravity="end"
-            android:text="@string/register"
-            android:textColor="@color/red_tr" />
-    </LinearLayout>
-
 </LinearLayout>

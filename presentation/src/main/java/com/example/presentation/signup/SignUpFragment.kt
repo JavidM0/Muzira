@@ -8,12 +8,13 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.domain.entity.User
 import com.example.presentation.R
 import com.example.presentation.databinding.FragmentSignUpBinding
+import com.example.ui_kit.`ui-kit`.viewmodel.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
     private val binding: FragmentSignUpBinding by viewBinding()
-    private val viewModel: SignUpViewModel by viewModel()
+    private val viewModel: SignUpViewModelApi by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupOnSignUpClickListener()
@@ -32,34 +33,32 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
     }
 
     private fun observeViewModel() = with(viewModel) {
-        invalidEmailEvent.observe(viewLifecycleOwner) {
+        invalidEmailEvent.bind(viewLifecycleOwner) {
             resetErrors()
             binding.emailTextInputLayout.error =
-                getString(R.string.fragment_sign_up_error_invalid_email)
+                getString(R.string.sign_up_error_invalid_email)
         }
 
-        invalidPasswordEvent.observe(viewLifecycleOwner) {
+        invalidPasswordEvent.bind(viewLifecycleOwner) {
             resetErrors()
             binding.passwordTextInputLayout.error =
-                getString(R.string.fragment_sign_up_error_invalid_password)
+                getString(R.string.sign_up_error_invalid_password)
         }
 
-        invalidConfirmPasswordEvent.observe(viewLifecycleOwner) {
+        invalidConfirmPasswordEvent.bind(viewLifecycleOwner) {
             resetErrors()
             binding.confirmPasswordTextInputLayout.error =
-                getString(R.string.fragment_sign_up_error_empty_confirm_password)
+                getString(R.string.sign_up_error_empty_confirm_password)
         }
 
-        successValidationEvent.observe(viewLifecycleOwner) {
+        successValidationEvent.bind(viewLifecycleOwner) {
             resetErrors()
             val bundle = Bundle()
             val textOfEmailEt = binding.etEmail.text.toString()
             val textOfPasswordEt = binding.etPassword.text.toString()
 
             bundle.putSerializable(USER_BUNDLE_KEY, it)
-
             viewModel.registerUser(User(0, textOfEmailEt, textOfPasswordEt))
-
             findNavController().navigate(R.id.action_signUpFragment_to_musicPlayerFragment)
         }
     }

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homePageFragment"
-        android:name="com.example.presentation.HomePageFragment"
+        android:name="com.example.presentation.home.HomePageFragment"
         android:label="fragment_home_page"
         tools:layout="@layout/fragment_home_page" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/musicPlayerFragment"
-        android:name="com.example.presentation.MusicPlayerFragment"
+        android:name="com.example.presentation.player.MusicPlayerFragment"
         android:label="fragment_music_player"
         tools:layout="@layout/fragment_music_player" >
         <action

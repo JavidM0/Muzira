@@ -7,29 +7,27 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="30dp"
-    tools:context=".HomePageFragment">
+    tools:context=".home.HomePageFragment">
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="170dp" />
 
     <TextView
+        style="@style/Bold.ColorBlack.28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/apax_bold"
-        android:text="@string/getStarted"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="28sp" />
+        android:text="@string/sign_up__title__get_started"
+        android:textAlignment="center" />
 
     <TextView
+        style="@style/Thin.16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:fontFamily="@font/apax_thin"
-        android:text="@string/enter_details"
-        android:textAlignment="center"
-        android:textSize="16sp" />
+        android:text="@string/sign_up__caption__please_enter_the_details"
+        android:textAlignment="center" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email_text_input_layout"
@@ -41,16 +39,14 @@
 
         <EditText
             android:id="@+id/et_email"
+            style="@style/Thin.ColorBlack"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@color/light_gray"
-            android:fontFamily="@font/apax_thin"
-            android:hint="@string/email"
+            android:hint="@string/sign_up__title__email"
             android:inputType="textEmailAddress"
             android:lines="1"
             android:maxLines="1"
-            android:padding="10dp"
-            android:textColor="@color/black" />
+            android:padding="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -65,16 +61,14 @@
 
         <EditText
             android:id="@+id/et_password"
+            style="@style/Thin.ColorBlack"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@color/light_gray"
-            android:fontFamily="@font/apax_thin"
-            android:hint="@string/password"
+            android:hint="@string/sign_up__title__password"
             android:inputType="textPassword"
             android:lines="1"
             android:maxLines="1"
-            android:padding="10dp"
-            android:textColor="@color/black" />
+            android:padding="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -89,27 +83,24 @@
 
         <EditText
             android:id="@+id/et_confirmPassword"
+            style="@style/Thin.ColorBlack"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@color/light_gray"
-            android:fontFamily="@font/apax_thin"
-            android:hint="@string/confirmPassword"
+            android:hint="@string/sign_up__title__confirm_password"
             android:inputType="textPassword"
             android:lines="1"
             android:maxLines="1"
-            android:padding="10dp"
-            android:textColor="@color/black" />
+            android:padding="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_signUp"
+        style="@style/Bold.ColorWhite"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginTop="63dp"
         android:backgroundTint="@color/red"
-        android:fontFamily="@font/apax_bold"
-        android:text="@string/signUp"
-        android:textColor="@color/white"
+        android:text="@string/sign_up__action__sign_up"
         app:cornerRadius="40dp" />
 
     <LinearLayout
@@ -119,20 +110,18 @@
         android:orientation="horizontal">
 
         <TextView
+            style="@style/Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/apax_regular"
-            android:text="@string/have_account" />
+            android:text="@string/sign_up__caption__have_an_account" />
 
         <TextView
             android:id="@+id/tv_login"
+            style="@style/Regular.ColorRedTransparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
-            android:fontFamily="@font/apax_regular"
             android:gravity="end"
-            android:text="@string/login"
-            android:textColor="@color/red_tr" />
+            android:text="@string/sign_up__action__login" />
     </LinearLayout>
-
 </LinearLayout>
