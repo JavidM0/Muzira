@@ -11,8 +11,5 @@
     <color name="gray">#777777</color>
     <color name="dark_gray">#707070</color>
     <color name="red">#f72936</color>
-
-    <!--    #FA3535-->
-    <color name="red_tr">#CDF32929</color>
-
+    <color name="red_transparent">#CDF32929</color>
 </resources>

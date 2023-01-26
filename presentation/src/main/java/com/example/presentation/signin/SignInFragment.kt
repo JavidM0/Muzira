@@ -10,45 +10,37 @@ import com.example.data.module.UserInfoModule
 import com.example.presentation.R
 import com.example.presentation.databinding.FragmentSignInBinding
 import com.example.presentation.signup.SignUpFragment.Companion.USER_BUNDLE_KEY
+import com.example.ui_kit.`ui-kit`.viewmodel.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     private val binding: FragmentSignInBinding by viewBinding()
-    private val viewModel: SignInViewModel by viewModel()
+    private val viewModel: SignInViewModelApi by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setOnSignInClickListener()
-        setOnSignUpClickListener()
         observeViewModel()
     }
 
     private fun observeViewModel() = with(viewModel) {
-
-        errorLoginEvent.observe(viewLifecycleOwner) {
+        errorLoginEvent.bind(viewLifecycleOwner) {
             Toast.makeText(
                 requireContext(),
-                getString(R.string.fragment_sign_in_error_no_user_found),
+                getString(R.string.sign_in_error_no_user_found),
                 Toast.LENGTH_SHORT
             ).show()
         }
 
-        successLoginEvent.observe(viewLifecycleOwner) {
+        successLoginEvent.bind(viewLifecycleOwner) {
             Bundle().putSerializable(USER_BUNDLE_KEY, UserInfoModule(it.email))
-
             findNavController().navigate(R.id.action_signInFragment_to_musicPlayerFragment)
         }
     }
 
     private fun setOnSignInClickListener() = binding.btnLogin.setOnClickListener {
-
         val textOfEmailEt = binding.etEmail.text.toString()
         val textOfPasswordEt = binding.etPassword.text.toString()
-
         viewModel.checkUser(textOfEmailEt, textOfPasswordEt)
-    }
-
-    private fun setOnSignUpClickListener() = binding.tvRegister.setOnClickListener {
-        findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
     }
 }

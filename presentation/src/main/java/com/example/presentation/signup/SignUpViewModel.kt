@@ -5,22 +5,22 @@ import androidx.lifecycle.viewModelScope
 import com.example.data.module.UserInfoModule
 import com.example.domain.entity.User
 import com.example.domain.usecase.RegisterUserUseCase
-import kotlinx.coroutines.flow.MutableStateFlow
+import com.example.ui_kit.`ui-kit`.viewmodel.noReplyFlow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 import java.util.regex.Pattern
 
 class SignUpViewModel(private val registerUserUseCase: RegisterUserUseCase) : SignUpViewModelApi() {
 
-    override val invalidEmailEvent: MutableStateFlow<Boolean> = MutableStateFlow(false)
-    override val invalidPasswordEvent: MutableStateFlow<Boolean> = MutableStateFlow(false)
-    override val invalidConfirmPasswordEvent: MutableStateFlow<Boolean> = MutableStateFlow(false)
-    override val successValidationEvent: MutableStateFlow<UserInfoModule> =
-        MutableStateFlow(UserInfoModule(EMPTY_EMAIL))
+    override val invalidEmailEvent: MutableSharedFlow<Boolean> = noReplyFlow()
+    override val invalidPasswordEvent: MutableSharedFlow<Boolean> = noReplyFlow()
+    override val invalidConfirmPasswordEvent: MutableSharedFlow<Boolean> = noReplyFlow()
+    override val successValidationEvent: MutableSharedFlow<UserInfoModule> = noReplyFlow()
 
-    fun validateInputs(
+    override fun validateInputs(
         email: String,
         password: String,
-        confirmPassword: String,
+        confirmPassword: String
     ) {
         viewModelScope.launch {
             when {
@@ -43,14 +43,13 @@ class SignUpViewModel(private val registerUserUseCase: RegisterUserUseCase) : Si
     private fun isValidateConfirmPassword(password: String, confirmPassword: String) =
         password == confirmPassword
 
-    fun registerUser(user: User) {
+    override fun registerUser(user: User) {
         viewModelScope.launch {
             registerUserUseCase.execute(user)
         }
     }
 
     companion object {
-        const val EMPTY_EMAIL = ""
         const val PASSWORD_PATTERN =
             "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@\$%^&()\\[\\]{:;<>,?/~_+\\-=|]).{8,64}$"
     }

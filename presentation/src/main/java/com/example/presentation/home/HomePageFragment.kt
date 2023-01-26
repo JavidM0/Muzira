@@ -1,10 +1,11 @@
-package com.example.presentation
+package com.example.presentation.home
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.presentation.R
 import com.example.presentation.databinding.FragmentHomePageBinding
 
 class HomePageFragment : Fragment(R.layout.fragment_home_page) {

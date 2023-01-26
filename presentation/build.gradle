@@ -30,7 +30,7 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
-        viewBinding = true
+        viewBinding true
     }
 }
 
@@ -38,9 +38,12 @@ dependencies {
 
     implementation project(':domain')
     implementation project(':data')
+    implementation project(':utils:ui-kit')
 
     implementation "androidx.core:core-ktx:$core_version"
     implementation "androidx.appcompat:appcompat:$app_compat_version"
+
+    //Material
     implementation "com.google.android.material:material:$material_version"
 
     //Constraint
@@ -57,6 +60,6 @@ dependencies {
     implementation "io.insert-koin:koin-core:$koin_version"
     implementation "io.insert-koin:koin-android:$koin_version"
 
-    //ViewBindingDelegate
+    //ViewBinding
     implementation "com.github.kirich1409:viewbindingpropertydelegate:$view_binding_delegate_version"
 }

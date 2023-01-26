@@ -1,4 +1,4 @@
-package com.example.presentation
+package com.example.presentation.player
 
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -11,6 +11,7 @@ import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.presentation.R
 import com.example.presentation.databinding.FragmentMusicPlayerBinding
 import com.example.presentation.signup.SignUpFragment.Companion.USER_BUNDLE_KEY
 import java.util.concurrent.TimeUnit.HOURS

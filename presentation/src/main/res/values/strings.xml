@@ -1,29 +1,36 @@
 <resources>
     <string name="app_name">Muzira</string>
 
-    <string name="title_homePage">Listening to music to keep your mood.</string>
-    <string name="subtitle_homePage">Music brings peace to the heart. Listen to all music according to the features we have provided</string>
-    <string name="getStarted">Get started</string>
-    <string name="have_account">Already have an account?</string>
-    <string name="login">Login</string>
-    <string name="loginNow">Login Now</string>
-    <string name="enter_details">Please enter the details below to continue</string>
-    <string name="not_have_account">Don\'t have an account!</string>
-    <string name="register">Register</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="confirmPassword">Confirm Password</string>
-    <string name="signUp">Sign up</string>
-    <string name="now_playing">Now Playing</string>
-    <string name="terminator">Terminator</string>
-    <string name="asake">Asake</string>
-    <string name="elapsed_time">0.00</string>
-    <string name="total_time">4.23</string>
+    <string name="home__title__listening_to_music">Listening to music to keep your mood.</string>
+    <string name="home__caption__music_brings_peace">Music brings peace to the heart. Listen to all music according to the features we have provided</string>
+    <string name="home__action__get_started">Get started</string>
+    <string name="home__caption__have_an_account">Already have an account?</string>
+    <string name="home__action__login">Login</string>
 
-    <string name="fragment_sign_up_error_invalid_email">Invalid email format</string>
-    <string name="fragment_sign_up_error_invalid_password">Password must be longer than 8 symbols and contain at least one lowercase and uppercase character, numeric symbol and special sign</string>
-    <string name="fragment_sign_up_error_empty_confirm_password">Passwords don\'t match</string>
+    <string name="sign_in__title__login_now">Login Now</string>
+    <string name="sign_in__caption__please_enter_the_details">Please enter the details below to continue</string>
+    <string name="sign_in__action__login">Login</string>
+    <string name="sign_in__title__email">Email</string>
+    <string name="sign_in__title__password">Password</string>
+    <string name="sign_in__caption__not_have_an_account">Don\'t have an account!</string>
+    <string name="sign_in__action__register">Register</string>
 
-    <string name="fragment_sign_in_error_no_user_found">No user found with such credentials. Please, try again</string>
+    <string name="sign_up__title__get_started">Get started</string>
+    <string name="sign_up__caption__please_enter_the_details">Please enter the details below to continue</string>
+    <string name="sign_up__title__email">Email</string>
+    <string name="sign_up__title__password">Password</string>
+    <string name="sign_up__title__confirm_password">Confirm Password</string>
+    <string name="sign_up__action__sign_up">Sign up</string>
+    <string name="sign_up__caption__have_an_account">Already have an account?</string>
+    <string name="sign_up__action__login">Login</string>
 
+    <string name="player__title__now_playing">Now Playing</string>
+    <string name="player__title__music_name">Terminator</string>
+    <string name="player__caption__author">Asake</string>
+
+    <string name="sign_in_error_no_user_found">No user found with such credentials. Please, try again</string>
+
+    <string name="sign_up_error_invalid_email">Invalid email format</string>
+    <string name="sign_up_error_invalid_password">Password must be longer than 8 symbols and contain at least one lowercase and uppercase character, numeric symbol and special sign</string>
+    <string name="sign_up_error_empty_confirm_password">Passwords don\'t match</string>
 </resources>

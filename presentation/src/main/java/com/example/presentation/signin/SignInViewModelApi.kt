@@ -8,4 +8,6 @@ abstract class SignInViewModelApi : ViewModel() {
 
     abstract val errorLoginEvent: Flow<Boolean>
     abstract val successLoginEvent: Flow<UserInfoModule>
+
+    abstract fun checkUser(email: String, password: String)
 }
