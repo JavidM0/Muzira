@@ -1,14 +1,14 @@
 package com.example.presentation.signup
 
-import android.util.Patterns
 import androidx.lifecycle.viewModelScope
 import com.example.data.module.UserInfoModule
-import com.example.domain.entity.User
 import com.example.domain.usecase.RegisterUserUseCase
+import com.example.presentation.mapper.toUserData
+import com.example.presentation.model.User
+import com.example.presentation.signup.validation.Validation
 import com.example.ui_kit.`ui-kit`.viewmodel.noReplyFlow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
-import java.util.regex.Pattern
 
 class SignUpViewModel(private val registerUserUseCase: RegisterUserUseCase) : SignUpViewModelApi() {
 
@@ -24,28 +24,24 @@ class SignUpViewModel(private val registerUserUseCase: RegisterUserUseCase) : Si
     ) {
         viewModelScope.launch {
             when {
-                !isValidateEmail(email) -> invalidEmailEvent.emit(true)
-                !isValidatePassword(password) -> invalidPasswordEvent.emit(true)
-                !isValidateConfirmPassword(
-                    password,
-                    confirmPassword
+                Validation.ValidateEmail.isValidateEmail(
+                    email = email
+                ) -> invalidEmailEvent.emit(true)
+                Validation.ValidatePassword.isValidatePassword(
+                    password = password
+                ) -> invalidPasswordEvent.emit(true)
+                Validation.ValidateConfirmPassword.isValidateConfirmPassword(
+                    password = password,
+                    confirmPassword = confirmPassword
                 ) -> invalidConfirmPasswordEvent.emit(true)
                 else -> successValidationEvent.emit(UserInfoModule(email))
             }
         }
     }
 
-    private fun isValidateEmail(email: String) = Patterns.EMAIL_ADDRESS.matcher(email).matches()
-
-    private fun isValidatePassword(password: String) =
-        Pattern.compile(PASSWORD_PATTERN).matcher(password).matches()
-
-    private fun isValidateConfirmPassword(password: String, confirmPassword: String) =
-        password == confirmPassword
-
     override fun registerUser(user: User) {
         viewModelScope.launch {
-            registerUserUseCase.execute(user)
+            registerUserUseCase.execute(user.toUserData())
         }
     }
 

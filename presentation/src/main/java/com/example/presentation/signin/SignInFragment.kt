@@ -1,7 +1,9 @@
 package com.example.presentation.signin
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -19,6 +21,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
     private val viewModel: SignInViewModelApi by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        setOnSignInParentClickListener()
         setOnSignInClickListener()
         observeViewModel()
     }
@@ -35,6 +38,17 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         successLoginEvent.bind(viewLifecycleOwner) {
             Bundle().putSerializable(USER_BUNDLE_KEY, UserInfoModule(it.email))
             findNavController().navigate(R.id.action_signInFragment_to_musicPlayerFragment)
+        }
+    }
+
+    private fun setOnSignInParentClickListener() {
+        binding.signInParentLayout.setOnClickListener {
+            val inputMethodManager =
+                requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(
+                requireActivity().currentFocus!!.windowToken,
+                0
+            )
         }
     }
 
