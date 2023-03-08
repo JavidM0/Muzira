@@ -1,5 +1,7 @@
 package com.example.muzira.di
 
+import com.example.presentation.player.PlayerViewModel
+import com.example.presentation.player.PlayerViewModelApi
 import com.example.presentation.signin.SignInViewModel
 import com.example.presentation.signin.SignInViewModelApi
 import com.example.presentation.signup.SignUpViewModel
@@ -15,5 +17,9 @@ val presentationModule = module {
 
     viewModel<SignInViewModelApi> {
         SignInViewModel(loginUserUseCase = get())
+    }
+
+    viewModel<PlayerViewModelApi> {
+        PlayerViewModel(musicRepository = get())
     }
 }

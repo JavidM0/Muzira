@@ -1,3 +1,3 @@
 package com.example.muzira.di
 
-val appModule = dataModule + domainModule + presentationModule
+val appModule = dataModule + domainModule + presentationModule + serversModule

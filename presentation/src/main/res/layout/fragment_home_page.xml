@@ -1,68 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="30dp"
     tools:context=".home.HomePageFragment">
 
-    <ImageView
-        android:id="@+id/iv_icon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/muzira_icon" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="375dp" />
-
-    <TextView
-        style="@style/Bold.ColorBlack.26"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:text="@string/home__title__listening_to_music"
-        android:textAlignment="center" />
-
-    <TextView
-        style="@style/Thin.16"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/home__caption__music_brings_peace"
-        android:textAlignment="center" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_getStarted"
-        style="@style/Bold.ColorWhite"
-        android:layout_width="140dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="70dp"
-        android:backgroundTint="@color/red"
-        android:text="@string/home__action__get_started"
-        app:cornerRadius="40dp" />
-
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:orientation="horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/muzira_icon" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="380dp" />
 
         <TextView
-            style="@style/Regular"
-            android:layout_width="wrap_content"
+            style="@style/Bold.ColorBlack.26"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:text="@string/home__caption__have_an_account" />
+            android:text="@string/home__title__listening_to_music"
+            android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/tv_login"
-            style="@style/Regular.ColorRedTransparent"
+            style="@style/Thin.16"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/home__caption__music_brings_peace"
+            android:textAlignment="center" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_getStarted"
+            style="@style/Bold.ColorWhite"
+            android:layout_width="140dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="70dp"
+            android:backgroundTint="@color/red"
+            android:text="@string/home__action__get_started"
+            app:cornerRadius="40dp" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:gravity="end"
-            android:text="@string/home__action__login" />
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home__caption__have_an_account" />
+
+            <TextView
+                android:id="@+id/tv_login"
+                style="@style/Regular.ColorRedTransparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:gravity="end"
+                android:text="@string/home__action__login" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

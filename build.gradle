@@ -10,7 +10,7 @@ buildscript {
         core_version = "1.9.0"
         material_version = "1.8.0"
         koin_version = "3.1.2"
-        room_version = "2.5.0"
+        room_version = "2.5.1"
         view_binding_delegate_version = "1.5.6"
         nav_version = "2.5.3"
         constraint_version = "2.1.4"

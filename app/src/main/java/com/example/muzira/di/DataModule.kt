@@ -1,10 +1,10 @@
 package com.example.muzira.di
 
 import androidx.room.Room
-import com.example.data.repository.UserRepositoryImpl
+import com.example.data.remote.music.MusicApi
 import com.example.data.room.UserDatabase
-import com.example.domain.repository.UserRepository
 import org.koin.dsl.module
+import retrofit2.Retrofit
 
 val dataModule = module {
 
@@ -20,7 +20,9 @@ val dataModule = module {
         get<UserDatabase>().userDao()
     }
 
-    single<UserRepository> {
-        UserRepositoryImpl(userDao = get())
+    single<MusicApi> {
+        provideApi(retrofit = get())
     }
 }
+
+inline fun <reified Api> provideApi(retrofit: Retrofit): Api = retrofit.create(Api::class.java)

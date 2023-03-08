@@ -13,7 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.presentation.R
 import com.example.presentation.databinding.FragmentMusicPlayerBinding
-import com.example.presentation.signup.SignUpFragment.Companion.USER_BUNDLE_KEY
+import com.example.ui_kit.`ui-kit`.viewmodel.bind
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.concurrent.TimeUnit.HOURS
 import java.util.concurrent.TimeUnit.MILLISECONDS
 import java.util.concurrent.TimeUnit.MINUTES
@@ -24,6 +25,8 @@ class MusicPlayerFragment : Fragment() {
     private val binding get() = checkNotNull(_binding)
 
     private var mediaPlayer = MediaPlayer()
+
+    private val viewModel: PlayerViewModelApi by viewModel()
 
     private lateinit var runnable: Runnable
     private var handler = Handler(Looper.getMainLooper())
@@ -37,7 +40,8 @@ class MusicPlayerFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val userInfo = Bundle().getSerializable(USER_BUNDLE_KEY)
+        viewModel.showList()
+        observeViewModel()
 
         mediaPlayer = MediaPlayer.create(requireContext(), R.raw.terminator_song)
 
@@ -104,6 +108,13 @@ class MusicPlayerFragment : Fragment() {
             MILLISECONDS.toMinutes(millis) % HOURS.toMinutes(1),
             MILLISECONDS.toSeconds(millis) % MINUTES.toSeconds(1)
         )
+    }
+
+    private fun observeViewModel() = with(viewModel) {
+
+        successGetListEvent.bind(viewLifecycleOwner) {
+            //TODO: Display the received data
+        }
     }
 
     companion object {

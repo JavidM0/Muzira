@@ -33,4 +33,6 @@
     <string name="sign_up_error_invalid_email">Invalid email format</string>
     <string name="sign_up_error_invalid_password">Password must be longer than 8 symbols and contain at least one lowercase and uppercase character, numeric symbol and special sign</string>
     <string name="sign_up_error_empty_confirm_password">Passwords don\'t match</string>
+
+    <string name="player_error_no_music_found">No music found</string>
 </resources>
