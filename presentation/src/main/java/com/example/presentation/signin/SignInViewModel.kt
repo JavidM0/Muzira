@@ -3,7 +3,6 @@ package com.example.presentation.signin
 import androidx.lifecycle.viewModelScope
 import com.example.data.module.UserInfoModule
 import com.example.domain.usecase.LoginUserUseCase
-import com.example.presentation.mapper.toUser
 import com.example.ui_kit.`ui-kit`.viewmodel.noReplyFlow
 import kotlinx.coroutines.flow.MutableSharedFlow
 
@@ -16,7 +15,7 @@ class SignInViewModel(private val loginUserUseCase: LoginUserUseCase) : SignInVi
 
     override fun checkUser(email: String, password: String) {
         viewModelScope.launch {
-            val user = loginUserUseCase.execute(email = email, password = password)?.toUser()
+            val user = loginUserUseCase.execute(email, password)
             if (user != null) {
                 successLoginEvent.emit(UserInfoModule(user.email))
             } else {

@@ -14,8 +14,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Muzira"
 include ':app'
+include ':domain'
 include ':data'
 include ':presentation'
 include ':utils'
 include ':utils:ui-kit'
-include ':domain'

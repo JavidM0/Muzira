@@ -2,7 +2,7 @@ package com.example.presentation.signup
 
 import androidx.lifecycle.ViewModel
 import com.example.data.module.UserInfoModule
-import com.example.presentation.model.User
+import com.example.domain.entity.User
 import kotlinx.coroutines.flow.Flow
 
 abstract class SignUpViewModelApi : ViewModel() {
