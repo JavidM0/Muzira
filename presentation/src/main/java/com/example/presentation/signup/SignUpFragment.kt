@@ -1,15 +1,13 @@
 package com.example.presentation.signup
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.domain.entity.User
 import com.example.presentation.R
 import com.example.presentation.databinding.FragmentSignUpBinding
-import com.example.presentation.model.User
 import com.example.ui_kit.`ui-kit`.viewmodel.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -19,7 +17,6 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
     private val viewModel: SignUpViewModelApi by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        setOnSignUpParentClickListener()
         setupOnSignUpClickListener()
         setOnSignInClickListener()
         observeViewModel()
@@ -63,17 +60,6 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
             bundle.putSerializable(USER_BUNDLE_KEY, it)
             viewModel.registerUser(User(0, textOfEmailEt, textOfPasswordEt))
             findNavController().navigate(R.id.action_signUpFragment_to_musicPlayerFragment)
-        }
-    }
-
-    private fun setOnSignUpParentClickListener() {
-        binding.signUpParentLayout.setOnClickListener {
-            val inputMethodManager =
-                requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(
-                requireActivity().currentFocus!!.windowToken,
-                0
-            )
         }
     }
 
